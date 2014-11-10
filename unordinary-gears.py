@@ -324,7 +324,8 @@ Russian support forum:
 		path = self.selected.values()[0]
 		if "d" not in path.keys() :  self.error('Please select a "Path"!','error')
 		csp = cubicsuperpath.parsePath(path.get("d"))
-
+		
+		center_group = inkex.etree.SubElement( path.getparent(),  inkex.addNS('g','svg') )
 		group = inkex.etree.SubElement( path.getparent(),  inkex.addNS('g','svg') )
 		attrib = path.attrib
 
@@ -432,8 +433,8 @@ Russian support forum:
 				self.error("Optimized distance: %s. "%(self.distance/self.options.units))
 				self.error("Optimized parameter K: %s (the closer to 1.0 the better)."%K)
 				self.error("Time elapsed %s seconds." %(time.time()-time_))			
-			self.draw_pointer(c1, color = "#000080", width = 1, group = group )
-			self.draw_pointer(c2, color = "#000080", width = 1, group = group )
+			self.draw_pointer(c1, color = "#000080", width = 1, group = center_group )
+			self.draw_pointer(c2, color = "#000080", width = 1, group = center_group )
 		else :
 			# Linear gear
 			c1x,c1y = c1[0], c1[1]
