@@ -365,7 +365,8 @@ Russian support forum:
 			# Radial gear
 			if not self.options.variable_speed :
 				for i in range(self.num):
-					alpha = math.pi*2*(i)/self.num
+					
+					alpha = math.pi*2*(i)/self.num*self.options.rev
 					alpha1 = alpha*self.second_teeth
 					alpha2 = alpha*self.first_teeth 
 
